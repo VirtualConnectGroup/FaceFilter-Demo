@@ -22,35 +22,35 @@
     xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
 
     <a-assets>
+      <img id="heart4" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_4.png" crossorigin="anonymous">
+      <img id="heart5" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_5.png" crossorigin="anonymous">
+      <img id="heart6" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_6.png" crossorigin="anonymous">
 
-      <a-asset-item id="heart" class="cantap" src="https://augmentyourworldimages.s3.amazonaws.com/LoveCoupons-G/Heart5.glb"></a-asset-item>
-      <!--  <a-asset-item id="glasses2Model" class="cantap" src="./assets/Models/stereo-glasses2.glb"></a-asset-item>-->
     </a-assets>
 
 
 
-    <a-camera look-controls="enabled: false" wasd-controls="enabled: false" position="0 1.6 0" raycaster="objects: .cantap" cursor="
-        fuse: false;
-        rayOrigin: mouse;"></a-camera>
+    <a-camera look-controls="enabled: false" wasd-controls="enabled: false" position="0 1.6 0" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;">
+    </a-camera>
 
     <xrextras-faceanchor>
 
 
       <xrextras-face-attachment point="leftEyebrowOuter">
 
-        <a-entity>
-          <a-circle src="https://augmentyourworldimages.s3.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_26.png" transparent="true" position="0.25 -0.03 0" rotation="0 0 0" radius="1" segments="100" material="roughness: 0.8; metalness: 0.5;">
-          </a-circle>
-          <a-plane position="0.25 -0.01 0" scale="1 1 1" side="back" depth-write="false" opacity="1" transparent="true" roughness="0.25" src="https://augmentyourworldimages.s3.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_4.png">
+        <!--    <a-entity>
+          <a-circle src="#heart" transparent="true" position="0.25 -0.03 0" rotation="0 0 0" radius="1" segments="100" material="roughness: 0.8; metalness: 0.5;">
+          </a-circle> -->
+        <<a-plane position="0.2 .3 -1" scale="1.1 1.1 1.1" side="back" depth-write="false" opacity="1" transparent="true" roughness="0.25" src="#heart5">
           </a-plane>
-          <!--          <a-plane position="-0.25 -0.01 0" height="0.25" width="0.4" side="back" depth-write="false" color="#FFC828" opacity="0.5" roughness="0.25"></a-plane> -->
-        </a-entity>
+
+          </a-entity>
 
       </xrextras-face-attachment>
 
     </xrextras-faceanchor>
 
-    <a-light type="directional" target="#face" position="0 1.8 3" intensity="0.8"></a-light>
+    <!--    <a-light type="directional" target="#face" position="0 1.8 3" intensity="0.8"></a-light> -->
     <a-light type="ambient" intensity="0.8"></a-light>
 
   </a-scene>
