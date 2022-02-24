@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>8th Wall Web: A-FRAME</title>
+
+  <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
+  <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
+
+  <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
+         See github.com/8thwall/web/tree/master/xrextras -->
+  <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+
+  <!-- 8thWall Web - Replace the app key here with your own app key -->
+  <script async src="https://apps.8thwall.com/xrweb?appKey=hZgvYGmf38qwmtbulYqPOuGUvzqRi2UhQa9tTJ4fs5l7nhDQ0944Q3YmxVfRaVoOzOxhV1"></script>
+
+</head>
+
+<body>
+  <a-scene next-button xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-pause-on-hidden renderer="maxCanvasWidth: 960; maxCanvasHeight: 960"
+    xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
+
+    <a-assets>
+
+      <a-asset-item id="heart" class="cantap" src="https://augmentyourworldimages.s3.amazonaws.com/LoveCoupons-G/Heart5.glb"></a-asset-item>
+      <!--  <a-asset-item id="glasses2Model" class="cantap" src="./assets/Models/stereo-glasses2.glb"></a-asset-item>-->
+    </a-assets>
+
+
+
+    <a-camera look-controls="enabled: false" wasd-controls="enabled: false" position="0 1.6 0" raycaster="objects: .cantap" cursor="
+        fuse: false;
+        rayOrigin: mouse;"></a-camera>
+
+    <xrextras-faceanchor>
+
+
+      <xrextras-face-attachment point="leftEyebrowOuter">
+
+        <a-entity>
+          <a-circle src="https://augmentyourworldimages.s3.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_26.png" transparent="true" position="0.25 -0.03 0" rotation="0 0 0" radius="1" segments="100" material="roughness: 0.8; metalness: 0.5;">
+          </a-circle>
+          <a-plane position="0.25 -0.01 0" scale="1 1 1" side="back" depth-write="false" opacity="1" transparent="true" roughness="0.25" src="https://augmentyourworldimages.s3.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_4.png">
+          </a-plane>
+          <!--          <a-plane position="-0.25 -0.01 0" height="0.25" width="0.4" side="back" depth-write="false" color="#FFC828" opacity="0.5" roughness="0.25"></a-plane> -->
+        </a-entity>
+
+      </xrextras-face-attachment>
+
+    </xrextras-faceanchor>
+
+    <a-light type="directional" target="#face" position="0 1.8 3" intensity="0.8"></a-light>
+    <a-light type="ambient" intensity="0.8"></a-light>
+
+  </a-scene>
+</body>
+
+</html>
