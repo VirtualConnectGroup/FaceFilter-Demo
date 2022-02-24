@@ -15,9 +15,40 @@
   <!-- 8thWall Web - Replace the app key here with your own app key -->
   <script async src="https://apps.8thwall.com/xrweb?appKey=hZgvYGmf38qwmtbulYqPOuGUvzqRi2UhQa9tTJ4fs5l7nhDQ0944Q3YmxVfRaVoOzOxhV1"></script>
 
+  <script>
+    const nextButtonComponent = () => ({
+      init: function() {
+        const modelList = ["heart4", "heart5", "heart6"]
+
+        const model = document.getElementById('model')
+        const nextButton = document.getElementById('nextbutton')
+        nextButton.style.display = 'block'
+
+        let idx = 1 // Start with the 2nd model as 1st is already in the scene on page load
+        const nextModel = () => {
+          // Need to remove gltf-component first due to AFrame regression: https://github.com/aframevr/aframe/issues/4341
+          model.removeAttribute('src')
+          // Switch to next model in the list
+          model.setAttribute('src', `#${modelList[idx]}`)
+
+          idx = (idx + 1) % modelList.length
+        }
+        nextButton.onclick = nextModel // Switch to the next model when the button is pressed.
+      }
+    })
+
+    export {
+      nextButtonComponent
+    }
+  </script>
+
 </head>
 
 <body>
+  <div id="nextbutton" style="display: none; z-index: 30">
+    <h2>Next 3D Model</h2>
+  </div>
+
   <a-scene next-button xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-pause-on-hidden renderer="maxCanvasWidth: 960; maxCanvasHeight: 960"
     xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
 
@@ -41,17 +72,19 @@
         <!--    <a-entity>
           <a-circle src="#heart" transparent="true" position="0.25 -0.03 0" rotation="0 0 0" radius="1" segments="100" material="roughness: 0.8; metalness: 0.5;">
           </a-circle> -->
-        <<a-plane position="0.2 .3 -1" scale="1.1 1.1 1.1" side="back" depth-write="false" opacity="1" transparent="true" roughness="0.25" src="#heart5">
+        <a-entity id="model" class="clickable" scale="1.1 1.1 1.1" position="0 0.05 0" raycaster="objects: .clickable" cursor>
+          <a-plane position="0.5 .5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 1" transparent="true" roughness="0.25" src="#heart5">
           </a-plane>
+        </a-entity>
 
-          </a-entity>
 
       </xrextras-face-attachment>
 
     </xrextras-faceanchor>
 
-    <!--    <a-light type="directional" target="#face" position="0 1.8 3" intensity="0.8"></a-light> -->
-    <a-light type="ambient" intensity="0.8"></a-light>
+    <!--<a-light type="directional" target="#face" position="0 1.2 3" intensity="0.4"></a-light>-->
+    <a-light type="ambient" intensity="1"></a-light>
+
 
   </a-scene>
 </body>
