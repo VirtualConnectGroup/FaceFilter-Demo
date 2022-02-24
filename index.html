@@ -16,40 +16,47 @@
   <script async src="https://apps.8thwall.com/xrweb?appKey=hZgvYGmf38qwmtbulYqPOuGUvzqRi2UhQa9tTJ4fs5l7nhDQ0944Q3YmxVfRaVoOzOxhV1"></script>
 
   <script>
-    const nextButtonComponent = () => ({
+    AFRAME.registerComponent('raycaster-listen', {
       init: function() {
-        const modelList = ["heart4", "heart5", "heart6"]
+        // Use events to figure out what raycaster is listening so we don't have to
+        // hardcode the raycaster.
+        this.el.addEventListener('raycaster-intersected', evt => {
+          this.raycaster = evt.detail.el;
+        });
+        this.el.addEventListener('raycaster-intersected-cleared', evt => {
+          this.raycaster = null;
+        });
+      },
 
-        const model = document.getElementById('model')
-        const nextButton = document.getElementById('nextbutton')
-        nextButton.style.display = 'block'
+      tick: function() {
+        if (!this.raycaster) {
+          return;
+        } // Not intersecting.
 
-        let idx = 1 // Start with the 2nd model as 1st is already in the scene on page load
-        const nextModel = () => {
-          // Need to remove gltf-component first due to AFrame regression: https://github.com/aframevr/aframe/issues/4341
-          model.removeAttribute('src')
-          // Switch to next model in the list
-          model.setAttribute('src', `#${modelList[idx]}`)
-
-          idx = (idx + 1) % modelList.length
+        let intersection = this.raycaster.components.raycaster.getIntersection(this.el);
+        if (!intersection) {
+          return;
         }
-        nextButton.onclick = nextModel // Switch to the next model when the button is pressed.
+        console.log(intersection.point);
       }
-    })
-
-    export {
-      nextButtonComponent
-    }
+    });
   </script>
 
 </head>
 
-<body>
-  <div id="nextbutton" style="display: none; z-index: 30">
-    <h2>Next 3D Model</h2>
-  </div>
+<script>
+  AFRAME.registerComponent('clickhandler', {
+    init: function() {
+      this.el.addEventListener('click', () => {
+        alert('Clicked!')
+      });
+    }
+  });
+</script>
 
-  <a-scene next-button xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-pause-on-hidden renderer="maxCanvasWidth: 960; maxCanvasHeight: 960"
+<body>
+
+  <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: [clickhandler];" xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-pause-on-hidden
     xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
 
     <a-assets>
@@ -60,9 +67,11 @@
     </a-assets>
 
 
-
-    <a-camera look-controls="enabled: false" wasd-controls="enabled: false" position="0 1.6 0" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;">
+    <a-camera "rayOrigin: mouse" look-controls="enabled: false" wasd-controls="enabled: false" position="0 1.6 0">
     </a-camera>
+
+    <a-box clickhandler material="color: red;" scale="1 1 1" position="0 1 -15">
+    </a-box>
 
     <xrextras-faceanchor>
 
@@ -72,10 +81,11 @@
         <!--    <a-entity>
           <a-circle src="#heart" transparent="true" position="0.25 -0.03 0" rotation="0 0 0" radius="1" segments="100" material="roughness: 0.8; metalness: 0.5;">
           </a-circle> -->
-        <a-entity id="model" class="clickable" scale="1.1 1.1 1.1" position="0 0.05 0" raycaster="objects: .clickable" cursor>
-          <a-plane position="0.5 .5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 1" transparent="true" roughness="0.25" src="#heart5">
-          </a-plane>
-        </a-entity>
+
+
+
+        <a-plane clickhandler position="0.5 .5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 1" transparent="true" roughness="0.25" src="#heart5">
+        </a-plane>
 
 
       </xrextras-face-attachment>
