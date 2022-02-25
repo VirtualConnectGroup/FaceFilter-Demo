@@ -19,25 +19,27 @@
 </head>
 
 <script>
-  const modelList = ["heart4", "heart5", "heart6"];
+  const modelList = ["heart4", "heart5", "heart6", "heart7", "heart8", "heart9", "heart10"];
 
   AFRAME.registerComponent('clickhandler', {
     init: function() {
-      let idx = 1;
-
-
+      let count = 0;
       this.el.addEventListener('click', () => {
+        setInterval(function() {
+          if (count < 50) {
+            count += 1;
+            console.log(count);
 
-        console.log("HeartClick")
-        let randIndex = Math.floor(Math.random() * modelList.length);
-        console.log(randIndex);
-        heart.removeAttribute('src')
-        heart.setAttribute('src', `#${modelList[randIndex]}`)
+            console.log("HeartClick")
+            let randIndex = Math.floor(Math.random() * modelList.length);
+            console.log(randIndex);
+            heart.removeAttribute('src')
+            heart.setAttribute('src', `#${modelList[randIndex]}`)
 
-        idx = (idx + 1) % modelList.length
+          };
+        }, 100);
       });
     }
-
   });
 </script>
 
@@ -51,11 +53,14 @@
       <img id="heart4" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_4.png" crossorigin="anonymous">
       <img id="heart5" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_5.png" crossorigin="anonymous">
       <img id="heart6" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_6.png" crossorigin="anonymous">
-
+      <img id="heart7" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_7.png" crossorigin="anonymous">
+      <img id="heart8" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_8.png" crossorigin="anonymous">
+      <img id="heart9" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_9.png" crossorigin="anonymous">
+      <img id="heart10" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_10.png" crossorigin="anonymous">
     </a-assets>
 
 
-    <a-camera "rayOrigin: mouse" look-controls="enabled: false" wasd-controls="enabled: false" position="0 0 -3">
+    <a-camera "rayOrigin: mouse" look-controls="enabled: false" wasd-controls="enabled: false" position="0 2 -3">
     </a-camera>
 
 
@@ -71,7 +76,7 @@
 
 
 
-        <a-plane id="heart" clickhandler src="#heart5" position="0.5 .5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 -1" transparent="true" roughness="0.25">
+        <a-plane id="heart" clickhandler src="#heart5" position="-0.3 1.5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 -1" transparent="true" roughness="0.25">
         </a-plane>
 
 
