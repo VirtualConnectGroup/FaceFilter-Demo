@@ -19,14 +19,14 @@
 </head>
 
 <script>
-  const modelList = ["heart4", "heart5", "heart6", "heart7", "heart8", "heart9", "heart10"];
+  const modelList = ["heart1", "heart2", "heart3", "heart4", "heart5", "heart6", "heart7", "heart8", "heart9", "heart10", "heart11", "heart12"];
 
   AFRAME.registerComponent('clickhandler', {
     init: function() {
       let count = 0;
       this.el.addEventListener('click', () => {
         setInterval(function() {
-          if (count < 50) {
+          if (count < 20) {
             count += 1;
             console.log(count);
 
@@ -43,20 +43,24 @@
   });
 </script>
 
-
 <body>
 
   <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: [clickhandler];" xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-pause-on-hidden
     xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
 
     <a-assets>
-      <img id="heart4" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_4.png" crossorigin="anonymous">
-      <img id="heart5" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_5.png" crossorigin="anonymous">
-      <img id="heart6" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_6.png" crossorigin="anonymous">
-      <img id="heart7" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_7.png" crossorigin="anonymous">
-      <img id="heart8" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_8.png" crossorigin="anonymous">
-      <img id="heart9" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_9.png" crossorigin="anonymous">
-      <img id="heart10" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/7GHV-Valentines_Coupons_10.png" crossorigin="anonymous">
+      <img id="heart1" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart1.png" crossorigin="anonymous">
+      <img id="heart2" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
+      <img id="heart3" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart3.png" crossorigin="anonymous">
+      <img id="heart4" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart4.png" crossorigin="anonymous">
+      <img id="heart5" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart5.png" crossorigin="anonymous">
+      <img id="heart6" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart6.png" crossorigin="anonymous">
+      <img id="heart7" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart7.png" crossorigin="anonymous">
+      <img id="heart8" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart8.png" crossorigin="anonymous">
+      <img id="heart9" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart9.png" crossorigin="anonymous">
+      <img id="heart10" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart10.png" crossorigin="anonymous">
+      <img id="heart11" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart11.png" crossorigin="anonymous">
+      <img id="heart12" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
     </a-assets>
 
 
@@ -76,7 +80,7 @@
 
 
 
-        <a-plane id="heart" clickhandler src="#heart5" position="-0.3 1.5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 -1" transparent="true" roughness="0.25">
+        <a-plane id="heart" clickhandler src="#heart1" position="-0.3 1.5 0" scale="2 1.5 2" side="back" depth-write="false" opacity="1" rotation="-3 5 -1" transparent="true" roughness="0.25">
         </a-plane>
 
 
