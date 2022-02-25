@@ -15,44 +15,32 @@
   <!-- 8thWall Web - Replace the app key here with your own app key -->
   <script async src="https://apps.8thwall.com/xrweb?appKey=hZgvYGmf38qwmtbulYqPOuGUvzqRi2UhQa9tTJ4fs5l7nhDQ0944Q3YmxVfRaVoOzOxhV1"></script>
 
-  <script>
-    AFRAME.registerComponent('raycaster-listen', {
-      init: function() {
-        // Use events to figure out what raycaster is listening so we don't have to
-        // hardcode the raycaster.
-        this.el.addEventListener('raycaster-intersected', evt => {
-          this.raycaster = evt.detail.el;
-        });
-        this.el.addEventListener('raycaster-intersected-cleared', evt => {
-          this.raycaster = null;
-        });
-      },
-
-      tick: function() {
-        if (!this.raycaster) {
-          return;
-        } // Not intersecting.
-
-        let intersection = this.raycaster.components.raycaster.getIntersection(this.el);
-        if (!intersection) {
-          return;
-        }
-        console.log(intersection.point);
-      }
-    });
-  </script>
 
 </head>
 
 <script>
+  const modelList = ["heart4", "heart5", "heart6"];
+
   AFRAME.registerComponent('clickhandler', {
     init: function() {
+      let idx = 1;
+
+
       this.el.addEventListener('click', () => {
-        alert('Clicked!')
+
+        console.log("HeartClick")
+        let randIndex = Math.floor(Math.random() * modelList.length);
+        console.log(randIndex);
+        heart.removeAttribute('src')
+        heart.setAttribute('src', `#${modelList[randIndex]}`)
+
+        idx = (idx + 1) % modelList.length
       });
     }
+
   });
 </script>
+
 
 <body>
 
@@ -67,11 +55,10 @@
     </a-assets>
 
 
-    <a-camera "rayOrigin: mouse" look-controls="enabled: false" wasd-controls="enabled: false" position="0 1.6 0">
+    <a-camera "rayOrigin: mouse" look-controls="enabled: false" wasd-controls="enabled: false" position="0 0 -3">
     </a-camera>
 
-    <a-box clickhandler material="color: red;" scale="1 1 1" position="0 1 -15">
-    </a-box>
+
 
     <xrextras-faceanchor>
 
@@ -84,7 +71,7 @@
 
 
 
-        <a-plane clickhandler position="0.5 .5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 1" transparent="true" roughness="0.25" src="#heart5">
+        <a-plane id="heart" clickhandler src="#heart5" position="0.5 .5 0" scale="2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 -1" transparent="true" roughness="0.25">
         </a-plane>
 
 
