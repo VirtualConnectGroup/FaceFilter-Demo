@@ -26,7 +26,7 @@
       let count = 0;
       this.el.addEventListener('click', () => {
         setInterval(function() {
-          if (count < 20) {
+          if (count < 50) {
             count += 1;
             console.log(count);
 
@@ -37,11 +37,14 @@
             heart.setAttribute('src', `#${modelList[randIndex]}`)
 
           };
-        }, 100);
+        }, 50);
       });
     }
   });
+  //
 </script>
+
+
 
 <body>
 
@@ -49,18 +52,18 @@
     xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
 
     <a-assets>
-      <img id="heart1" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart1.png" crossorigin="anonymous">
-      <img id="heart2" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
-      <img id="heart3" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart3.png" crossorigin="anonymous">
-      <img id="heart4" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart4.png" crossorigin="anonymous">
-      <img id="heart5" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart5.png" crossorigin="anonymous">
-      <img id="heart6" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart6.png" crossorigin="anonymous">
-      <img id="heart7" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart7.png" crossorigin="anonymous">
-      <img id="heart8" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart8.png" crossorigin="anonymous">
-      <img id="heart9" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart9.png" crossorigin="anonymous">
-      <img id="heart10" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart10.png" crossorigin="anonymous">
-      <img id="heart11" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart11.png" crossorigin="anonymous">
-      <img id="heart12" src="https://augmentyourworldimages.s3.us-east-2.amazonaws.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
+      <img id="heart1" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart1.png" crossorigin="anonymous">
+      <img id="heart2" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
+      <img id="heart3" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart3.png" crossorigin="anonymous">
+      <img id="heart4" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart4.png" crossorigin="anonymous">
+      <img id="heart5" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart5.png" crossorigin="anonymous">
+      <img id="heart6" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart6.png" crossorigin="anonymous">
+      <img id="heart7" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart7.png" crossorigin="anonymous">
+      <img id="heart8" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart8.png" crossorigin="anonymous">
+      <img id="heart9" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart9.png" crossorigin="anonymous">
+      <img id="heart10" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart10.png" crossorigin="anonymous">
+      <img id="heart11" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart11.png" crossorigin="anonymous">
+      <img id="heart12" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
     </a-assets>
 
 
