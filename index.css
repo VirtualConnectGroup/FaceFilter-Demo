@@ -1,0 +1,21 @@
+.toggle {
+  width: 10vw;
+  height: 5vh;
+  left: 80%;
+  transform: translateX(-50%);
+  position: absolute;
+  font-size: medium;
+  font-family: sans-serif;
+  color: white;
+  background-color: #AD50FF;
+  border: none;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+#swap-dof-btn {
+  bottom: 10vh;
+}
+#swap-cam-btn {
+  bottom: 4vh;
+}
