@@ -48,11 +48,8 @@
 <body>
   <button id="swap-cam-btn" class="toggle">Camera Direction: back</button>
 
-  <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: [clickhandler];" xrextras-almost-there xrextras-runtime-error xrextras-pause-on-hidden xrextras-loading="
-  loadBackgroundColor: #007AFF;
-  cameraBackgroundColor: #5AC8FA;
-  loadImage: #myCustomImage;
-  loadAnimation: scale" xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
+  <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: [clickhandler];" xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-pause-on-hidden
+    xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
 
     <a-assets>
       <img id="heart1" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart1.png" crossorigin="anonymous">
@@ -66,8 +63,7 @@
       <img id="heart9" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart9.png" crossorigin="anonymous">
       <img id="heart10" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart10.png" crossorigin="anonymous">
       <img id="heart11" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart11.png" crossorigin="anonymous">
-      <img id="heart12" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart12.png" crossorigin="anonymous">
-      <img id="myCustomImage" src="https://images.augmentyourworld.com/branding/SocialMediaLogo-HomePage-512.png" crossorigin="anonymous">
+      <img id="heart12" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
     </a-assets>
 
 
@@ -75,14 +71,12 @@
     </a-camera>
 
     <xrextras-capture-button capture-mode="fixed"></xrextras-capture-button>
+
+    <xrextras-capture-config max-duration-ms="15000" max-dimension="1280" enable-end-card="true" cover-image-url="https://images.augmentyourworld.com/branding/SocialMediaLogo-HomePage-512.png" end-card-call-to-action="Try it at:" short-link=""
+      footer-image-url="//cdn.8thwall.com/web/img/almostthere/v2/poweredby-horiz-white-2.svg" watermark-image-url="//cdn.8thwall.com/web/img/mediarecorder/8logo.png" watermark-max-width="100" watermark-max-height="10" watermark-location="bottomRight"
+      file-name-prefix="my-capture-"></xrextras-capture-config>
+
     <xrextras-capture-preview action-button-share-text="Share" action-button-view-text="View" finalize-text="Exporting..."></xrextras-capture-preview>
-
-    <xrextras-capture-config max-duration-ms="15000" max-dimension="1280" enable-end-card="true" cover-image-url="https://images.augmentyourworld.com/branding/SocialMediaLogo-HomePage-512.png" end-card-call-to-action="Try it at:"
-      short-link="https://augmentyourworld.com" footer-image-url="https://images.augmentyourworld.com/branding/SocialMediaLogo-HomePage-512.png" watermark-image-url="https://images.augmentyourworld.com/branding/SocialMediaLogo-HomePage-512.png"
-      watermark-max-width="100" watermark-max-height="20" watermark-location="bottomleft" file-name-prefix="augment-"></xrextras-capture-config>
-
-
-
 
     <xrextras-faceanchor>
 
@@ -95,7 +89,7 @@
 
 
 
-        <a-plane id="heart" clickhandler src="#heart1" position="-0.3 1.5 0" scale="2.2 2 2" side="back" depth-write="false" opacity="1" rotation="-3 5 -1" transparent="true" roughness="0.25">
+        <a-plane id="heart" clickhandler src="#heart1" position="-0.3 1.5 0" scale="2 1.5 2" side="back" depth-write="false" opacity="1" rotation="-3 5 -1" transparent="true" roughness="0.25">
         </a-plane>
 
 
