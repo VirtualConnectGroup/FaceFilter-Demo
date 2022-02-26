@@ -15,41 +15,67 @@
   <!-- 8thWall Web - Replace the app key here with your own app key -->
   <script async src="https://apps.8thwall.com/xrweb?appKey=hZgvYGmf38qwmtbulYqPOuGUvzqRi2UhQa9tTJ4fs5l7nhDQ0944Q3YmxVfRaVoOzOxhV1"></script>
 
-  <script type="module" src="./app.js" </script> </head> <script>
-    const modelList = ["heart1", "heart2", "heart3", "heart4", "heart5", "heart6", "heart7", "heart8", "heart9", "heart10", "heart11", "heart12"];
 
-    AFRAME.registerComponent('clickhandler', {
-      init: function() {
-        let count = 0;
-        this.el.addEventListener('click', () => {
-          setInterval(function() {
-            if (count < 50) {
-              count += 1;
-              console.log(count);
+</head>
+<script>
+  const modelList = ["heart1", "heart2", "heart3", "heart4", "heart5", "heart6", "heart7", "heart8", "heart9", "heart10", "heart11", "heart12"];
 
-              console.log("HeartClick")
-              let randIndex = Math.floor(Math.random() * modelList.length);
-              console.log(randIndex);
-              heart.removeAttribute('src')
-              heart.setAttribute('src', `#${modelList[randIndex]}`)
+  AFRAME.registerComponent('clickhandler', {
+    init: function() {
+      let count = 0;
+      this.el.addEventListener('click', () => {
+        setInterval(function() {
+          if (count < 50) {
+            count += 1;
+            console.log(count);
 
-            };
-          }, 50);
-        });
-      }
-    });
-    //
-  </script>
+            console.log("HeartClick")
+            let randIndex = Math.floor(Math.random() * modelList.length);
+            console.log(randIndex);
+            heart.removeAttribute('src')
+            heart.setAttribute('src', `#${modelList[randIndex]}`)
 
-  <link rel="stylesheet" href="index.css">
+          };
+        }, 50);
+      });
+    }
+  });
+  //
+</script>
 
+<!-- <link rel="stylesheet" href="index.css"> -->
+<script>
+  var handleCameraStatusChange = function handleCameraStatusChange(event) {
+    console.log('status change', event.detail.status);
+
+    switch (event.detail.status) {
+      case 'requesting':
+        // Do something
+        break;
+
+      case 'hasStream':
+        // Do something
+        console.log("streamStarted");
+        break;
+
+      case 'failed':
+        event.target.emit('realityerror');
+        break;
+    }
+  };
+  let scene = this.el
+  scene.addEventListener('camerastatuschange', handleCameraStatusChange)
+</script>
 
 
 <body>
-  <button id="swap-cam-btn" class="toggle">Camera Direction: back</button>
+  <!-- <button id="swap-cam-btn" class="toggle">Camera Direction: back</button> -->
 
-  <a-scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: [clickhandler];" xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-pause-on-hidden
-    xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
+  <a-scene scene cursor="rayOrigin: mouse; fuse: false" raycaster="objects: [clickhandler];" xrextras-almost-there xrextras-runtime-error xrextras-pause-on-hidden xrextras-loading="
+   loadBackgroundColor: #007AFF;
+   cameraBackgroundColor: #5AC8FA;
+   loadImage: #myCustomImage;
+   loadAnimation: scale" xrface="mirroredDisplay: true;  meshGeometry: eyes, face, mouth; cameraDirection: front; allowedDevices: any;">
 
     <a-assets>
       <img id="heart1" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart1.png" crossorigin="anonymous">
@@ -63,7 +89,8 @@
       <img id="heart9" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart9.png" crossorigin="anonymous">
       <img id="heart10" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart10.png" crossorigin="anonymous">
       <img id="heart11" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart11.png" crossorigin="anonymous">
-      <img id="heart12" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart2.png" crossorigin="anonymous">
+      <img id="heart12" src="https://images.augmentyourworld.com/LoveCoupons-G/Heart12.png" crossorigin="anonymous">
+      <img id="myCustomImage" src="https://images.augmentyourworld.com/branding/SocialMediaLogo-HomePage-512.png" crossorigin="anonymous">
     </a-assets>
 
 
@@ -74,7 +101,7 @@
 
     <xrextras-capture-config max-duration-ms="15000" max-dimension="1280" enable-end-card="true" cover-image-url="https://images.augmentyourworld.com/branding/SocialMediaLogo-HomePage-512.png" end-card-call-to-action="Try it at:" short-link=""
       footer-image-url="//cdn.8thwall.com/web/img/almostthere/v2/poweredby-horiz-white-2.svg" watermark-image-url="//cdn.8thwall.com/web/img/mediarecorder/8logo.png" watermark-max-width="100" watermark-max-height="10" watermark-location="bottomRight"
-      file-name-prefix="my-capture-"></xrextras-capture-config>
+      file-name-prefix="amw-" configureAudioOutput="false"></xrextras-capture-config>
 
     <xrextras-capture-preview action-button-share-text="Share" action-button-view-text="View" finalize-text="Exporting..."></xrextras-capture-preview>
 
